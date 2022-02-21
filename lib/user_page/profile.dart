@@ -30,7 +30,7 @@ class _ProfileState extends State<Profile> {
     screenshotController.capture().then((image) async {
       if (image != null){
         final directory = await getTemporaryDirectory();
-        // File path = await File('${directory.path}/capture.jpg').create();
+        //File path = await File('${directory.path}/capture.jpg').create();
 
         Share.shareFiles(['${directory.path}/capture.jpg']);
       }
@@ -249,11 +249,11 @@ class _ProfileState extends State<Profile> {
                       },
                                       ),
                     );
+                  } else if (state is ListacuentaErrorState) {
+                    return Text("No hay datos disponibles");
                   } else {
                     return CircularProgressIndicator();
-    
                   }
-                  
                 },
               ),
               

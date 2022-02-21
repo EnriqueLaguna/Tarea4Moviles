@@ -18,8 +18,13 @@ class ListacuentaBloc extends Bloc<ListacuentaEvent, ListacuentaState> {
 
   void loadListaCuentas(ListacuentaEvent event, Emitter emitter) async{
     var MapaCuenta = await _getListacuentas();
-    emitter(ListcuentaReady(mapaCuenta: MapaCuenta));
+    if (MapaCuenta == null){
+      emitter(ListacuentaErrorState(errMsg: "Muerte"));
+    } else {
+      emitter(ListcuentaReady(mapaCuenta: MapaCuenta));
 
+    }
+    
   }
 
   Future _getListacuentas() async {
